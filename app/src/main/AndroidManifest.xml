@@ -28,7 +28,8 @@
         android:theme="@style/AppTheme">
 
         <!-- <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyC2PocTgkY-iXQc40tOSra-llv03lipiL4"/> -->
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,7 +51,8 @@
 
         <activity
             android:name=".MapsActivity2"
-            android:label="@string/title_activity_maps2"></activity>
+            android:label="@string/title_activity_maps2"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
