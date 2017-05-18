@@ -88,7 +88,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     }
 
     private void initializeSeekBar(){
-        //System.out.println("maxtime "+maxTime);
+        // System.out.println("maxtime "+maxTime);
         seekBar.setMax(maxTime);
         seekBar.setProgress(0);
         seekBar.setClickable(true);
@@ -140,6 +140,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         if(provider == null && map!=null){
             provider = new HeatmapTileProvider.Builder().data(coordinates).build();
             overlay = map.addTileOverlay(new TileOverlayOptions().tileProvider(provider));
+            provider.setGradient(ALT_HEATMAP_GRADIENT);
         }
         else{
             provider.setData(coordinates);
