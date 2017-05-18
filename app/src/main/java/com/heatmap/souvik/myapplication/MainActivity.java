@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(Void... params) {
             try {
-                fileName = DownloadFile.downloadFile(url, DEFAULT_SAVEFOLDER);
+                fileName = DownloadFile.downloadFile(url, DEFAULT_SAVEFOLDER, MainActivity.this);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -114,6 +114,10 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(aBoolean);
             if(aBoolean){
                 readFile(DEFAULT_SAVEFOLDER+'/'+fileName);
+            }
+            else {
+                Toast.makeText(MainActivity.this, "Connect to internet first", Toast.LENGTH_SHORT).show();
+                textView.setText("");
             }
 
         }
@@ -142,6 +146,9 @@ public class MainActivity extends AppCompatActivity {
             if(aBoolean){
                 decodeIp();
             }
+            else {
+                textView.setText("");
+            }
         }
     }
 
@@ -169,16 +176,19 @@ public class MainActivity extends AppCompatActivity {
             if(aBoolean){
                 launchActivity();
             }
+            else {
+                textView.setText("");
+            }
         }
     }
     private void isInternetAvailable() {
         try {
             InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
              if(!ipAddr.equals("")){
-                 Toast.makeText(this,"Connected to internet", Toast.LENGTH_SHORT);
+                 Toast.makeText(this,"Connected to internet", Toast.LENGTH_SHORT).show();
              }
              else {
-                 Toast.makeText(this, "Not connected to internet", Toast.LENGTH_SHORT);
+                 Toast.makeText(this, "Not connected to internet", Toast.LENGTH_SHORT).show();
              }
 
         } catch (Exception e) {

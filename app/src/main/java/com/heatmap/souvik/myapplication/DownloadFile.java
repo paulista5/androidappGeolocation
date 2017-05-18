@@ -17,14 +17,7 @@ import java.net.URL;
 public class DownloadFile {
     private static final int BUFFER_SIZE = 4096;
 
-
-    /**
-     * Downloads a file from a URL
-     * @param fileURL HTTP URL of the file to be downloaded
-     * @param saveDir path of the directory to save the file
-     * @throws IOException
-     */
-    public static String downloadFile(String fileURL, String saveDir)
+    public static String downloadFile(String fileURL, String saveDir, MainActivity activity)
             throws IOException {
         URL url = new URL(fileURL);
         HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
@@ -56,13 +49,14 @@ public class DownloadFile {
             System.out.println("Content-Length = " + contentLength);
             System.out.println("fileName = " + fileName);
 
-            // opens input stream from the HTTP connection
+
             InputStream inputStream = httpConn.getInputStream();
             String saveFilePath = saveDir + File.separator + fileName;
             File f = new File(saveFilePath);
             f.getParentFile().mkdirs();
             f.createNewFile();
-            // opens an output stream to save into file
+
+
             FileOutputStream outputStream = new FileOutputStream(f);
 
             int bytesRead = -1;
@@ -77,7 +71,7 @@ public class DownloadFile {
             //System.out.println("File downloaded");
 
         } else {
-            Toast.makeText(MainApplication.getContext(), "Connect to internet first", Toast.LENGTH_SHORT);
+
         }
         httpConn.disconnect();
         return fileName;
