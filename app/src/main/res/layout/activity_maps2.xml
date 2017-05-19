@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:id="@+id/cardMap"
         android:layout_height="70px"
+        android:layout_margin="10dp"
         app:cardBackgroundColor="@color/colorLightBlue">
 
         <SeekBar
